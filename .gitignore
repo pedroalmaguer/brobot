@@ -4,3 +4,5 @@ discord.log
 database.ini
 config.py
 connect.py
+__pycache__/config.cpython-39.pyc
+snippets
