@@ -60,10 +60,13 @@ logger.addHandler(handler)
 
 def insert_quote(cory_quotes):
     """ insert a new quote into the vendors table """
-    sql = """INSERT INTO quote(cory_quotes)
-             VALUES(%s) RETURNING quote;"""
+    #sql = """INSERT INTO quote2(cory_quotes)
+    #         VALUES(%s) RETURNING quote2;"""
+
+    sql = """INSERT INTO cory_quotes (quote2) VALUES(%s) RETURNING quote2;"""
+
     conn = None
-    quote = None
+    quote2 = None
     try:
         # read database configuration
         params = config()
@@ -74,7 +77,7 @@ def insert_quote(cory_quotes):
         # execute the INSERT statement
         cur.execute(sql, (cory_quotes,))
         # get the generated id back
-        quote = cur.fetchone()[0]
+        quote2 = cur.fetchone()[0]
         # commit the changes to the database
         conn.commit()
         # close communication with the database
@@ -85,7 +88,7 @@ def insert_quote(cory_quotes):
         if conn is not None:
             conn.close()
 
-    return quote
+    return quote2
 
 
 client = discord.Client()
